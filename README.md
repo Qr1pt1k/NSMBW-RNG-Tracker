@@ -26,8 +26,6 @@ def increment_rng(rng_seed:int) -> int:
 ```
 *(Note that this just represents how RNG changes when it's incremented; the actual RNG functions look a little different than this.)*
 
-...
-
 Here's a list of some ways that Mario can increment RNG:
 - Mario calls RNG once per jump, per wall-jump, and per bounce off an enemy. He doesn't call RNG when spin-jumping, jumping with an object in hand, jumping while he has Star, or crouch-jumping (unless he uncrouches mid-air).
 - Every time Mario breaks a brick block, RNG is incremented 13 times.
