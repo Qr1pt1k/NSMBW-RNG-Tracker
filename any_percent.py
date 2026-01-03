@@ -3,9 +3,6 @@
 
 from rng import *
 
-from numpy import array
-import numpy as np
-
 def get_frames_from_igts(start_igt:int | float, end_igt:float | int) -> int:
     frames = round((start_igt - end_igt) * 4096/92)
     return frames
@@ -275,3 +272,4 @@ class AnyPercentRNG:
             ))
 
         return probabilities
+
