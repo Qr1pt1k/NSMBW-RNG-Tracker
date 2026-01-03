@@ -2,7 +2,6 @@
 # interface.py
 
 from any_percent import AnyPercentRNG
-from rng import increment_seed, Batch
 
 from tkinter import ttk
 import tkinter as tk
@@ -803,3 +802,4 @@ class AnyPercentInterface:
     def mainloop(self) -> None:
         self.root.mainloop()
         self.export_defaults()
+
