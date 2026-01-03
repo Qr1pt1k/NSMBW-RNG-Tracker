@@ -139,5 +139,8 @@ The notation used in the app for Hammer Bro RNG follows the format **(Hammer Bro
 - **3-1-50** means the Hammer Bro started the HTC on 3 hammer throws (waited 45 frames), threw 1 hammer before jumping, and started its attack pattern with a Jump Timer of 50 frames. (The visual cue I use for 3-1-50 is the Hammer Bro jumping while facing toward the screen.)
 - **3-1-55** means the Hammer Bro started the HTC on 3 hammer throws (waited 45 frames), threw 1 hammer before jumping, and started its attack pattern with a Jump Timer of 55 frames. (The visual cue I use for 3-1-50 is the Hammer Bro jumping while facing to the right.)
 
+#### Yoshi
+Spawning Yoshi messes with RNG prediction, as he increments RNG in ways I don't fully understand nor know how to account for. In order for the RNG tracking to work as it should, please don't spawn Yoshi.
+
 ### 1-Cannon
 From the uncertainty caused by 1-1 and the observation of Hammer Bro attack patterns in 1-3, the app generates multiple probabilities for how likely the World 5 overworld enemies are to be in their optimal positions, with different probabilities for a different number of jumps in 1-Cannon. The app automatically calculates these probabilities when switching tabs, so you don't have to worry about hitting a "Calculate" button or anything of that sort.
