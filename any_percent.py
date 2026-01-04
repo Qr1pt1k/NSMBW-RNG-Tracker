@@ -1,7 +1,7 @@
 
 # any_percent.py
 
-from rng import *
+from rng import increment_seed, Batch
 
 def get_frames_from_igts(start_igt:int | float, end_igt:float | int) -> int:
     frames = round((start_igt - end_igt) * 4096/92)
@@ -86,13 +86,9 @@ class AnyPercentRNG:
             rng_seed := increment_seed(rng_seed, 75) for _ in range(rng_diff)
         ]
         batch_weights = [
-            (1 - ((2 * n / rng_diff) - 1) ** 2) ** 2 for n in range(rng_diff)
-        ]
-        """batch_weights = [
             (3 * n/rng_diff) * (((3 * n/rng_diff) - 3) ** 2) / 4
             for n in range(rng_diff)
-        ]"""
-        #batch_weights = [1. for _ in range(rng_diff)]
+        ]
 
         self.rng_batch = Batch(batch_seeds, batch_weights)
         return self.rng_batch
@@ -227,7 +223,7 @@ class AnyPercentRNG:
 
         CONFIRMED_START_RNG_CALLS = 89 + first_bro_prior_jumps
         CONFIRMED_MIDDLE_RNG_CALLS = 14 + second_bro_prior_jumps
-        CONFIRMED_END_RNG_CALLS = 159 + jumps_after_both_bros + \
+        CONFIRMED_END_RNG_CALLS = 114 + jumps_after_both_bros + \
             (13 * bricks_broken_after_both_bros)
 
         first_hammer_bro_sequence = self.get_hammer_bro_sequence(
@@ -272,4 +268,3 @@ class AnyPercentRNG:
             ))
 
         return probabilities
-

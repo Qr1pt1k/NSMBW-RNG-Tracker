@@ -1,14 +1,12 @@
-
 # main.py
 
-import os
 import sys
 
-from interface import AnyPercentInterface
+from interface import AnyPercentUI
 
 def main() -> int:
-    gui = AnyPercentInterface()
-    gui.mainloop()
+    ui = AnyPercentUI()
+    ui.mainloop()
 
     return 0
 
