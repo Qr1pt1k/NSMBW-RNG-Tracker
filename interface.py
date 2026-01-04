@@ -212,7 +212,7 @@ class AnyPercentUI:
                      first_bro_between_jumps:list[int] = [0, 0, 2, 2, 2],
                      second_bro_prior_jumps:int = 13,
                      second_bro_between_jumps:list[int] = [0, 0, 2, 2, 2],
-                     total_jumps:int = 8,
+                     total_jumps:int = 23,
                      bricks_broken_after_both_bros:int = 0):
             self.first_bro_prior_jumps = first_bro_prior_jumps
             self.first_bro_between_jumps = \
@@ -338,7 +338,7 @@ class AnyPercentUI:
             if first_pattern not in ('1-3-X', '3-3-X'): # No-jump patterns
                 first_between_jumps_label = ttk.Label(
                     first_bro_frame,
-                    text='Total jumps before\nHammer Bro #1\njumped'
+                    text='Jumps before\nHammer Bro #1\njumped'
                 )
                 first_between_jumps_counter = ttk.Spinbox(
                     first_bro_frame, from_=0, to=5,
@@ -410,7 +410,7 @@ class AnyPercentUI:
             if second_pattern not in ('1-3-X', '3-3-X'): # No-jump patterns
                 second_between_jumps_label = ttk.Label(
                     second_bro_frame,
-                    text='Total jumps before\nHammer Bro #2\njumped'
+                    text='Jumps before\nHammer Bro #2\njumped'
                 )
                 second_between_jumps_counter = ttk.Spinbox(
                     second_bro_frame, from_=0, to=5,
