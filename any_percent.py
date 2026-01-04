@@ -151,14 +151,10 @@ class AnyPercentRNG:
             sequence = [
                 [prior_jumps, throw_cycle_randint_entry],
                 [0, jump_timer_randint_entry],
-                [between_jumps, jump_attack_randint_entry],
+                [between_jumps + 1, jump_attack_randint_entry],
             ]
             if not does_mario_kill_hammer_bro:
                 # RNG is called an extra time because Hammer Bro landed
-                sequence += [
-                    [1, [1, [0]]]
-                ]
-            else:
                 sequence += [
                     [0, [1, [0]]]
                 ]
@@ -200,8 +196,7 @@ class AnyPercentRNG:
                second_bro_between_jumps:int, second_bro_throw_timer:int,
                second_bro_jump_timer:int, second_bro_throws:int,
                does_second_bro_jump_throw:bool, does_second_bro_die:bool,
-               jumps_after_both_bros:int, bricks_broken_after_both_bros:int
-               ) -> Batch:
+               total_jumps:int, bricks_broken_after_both_bros:int) -> Batch:
         """
         Generates and returns a new RNG batch for 1-3 from Hammer Bro RNG and
         gameplay in 1-3.
@@ -221,9 +216,22 @@ class AnyPercentRNG:
         so please don't spawn Yoshi.
         """
 
+        second_bro_prior_jumps -= first_bro_prior_jumps + \
+            first_bro_between_jumps
+        remaining_jumps = total_jumps - first_bro_prior_jumps - \
+            first_bro_between_jumps - second_bro_prior_jumps - \
+            second_bro_between_jumps
+
+        # 89 RNG calls when loading 1-3
         CONFIRMED_START_RNG_CALLS = 89 + first_bro_prior_jumps
+
+        # 14 RNG calls from Goombas spawning
         CONFIRMED_MIDDLE_RNG_CALLS = 14 + second_bro_prior_jumps
-        CONFIRMED_END_RNG_CALLS = 114 + jumps_after_both_bros + \
+
+        # 159 RNG calls from Goombas spawning, extra Hammer Bros spawning, the
+        # pipe transition, World 1 overworld RNG after 1-3, and loading
+        # 1-Cannon
+        CONFIRMED_END_RNG_CALLS = 159 + remaining_jumps + \
             (13 * bricks_broken_after_both_bros)
 
         first_hammer_bro_sequence = self.get_hammer_bro_sequence(
